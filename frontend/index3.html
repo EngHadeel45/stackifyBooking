@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackify</title>
+
+    <!-- ✅ جديد: جلب فونتين من Google — Syne للعناوين، DM Sans للنصوص -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+
+    <link rel="stylesheet" href="Stackify.css">
+</head>
+<body>
+
+    <!-- ✅ جديد: nav-logo يسار، nav-links يمين -->
+    <nav>
+        <a href="#home" class="nav-logo">Stack<span>ify</span></a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">Who we are</a>
+            <a href="career.html">Career</a>
+            <a href="form.html" class="nav-cta">Book a Meeting</a>
+        </div>
+    </nav>
+
+    <!-- ✅ جديد: section بدل header -->
+    <section id="home">
+
+        <div class="hero-inner">
+
+            <!-- ✅ جديد: النص الصغير فوق العنوان — الخط الأخضر قبله يجي من CSS بـ ::before -->
+            <div class="hero-eyebrow">Web Development Agency</div>
+
+            <!-- ✅ جديد: em تلوّن الكلمة بلون accent بدون italic -->
+            <h1>We build websites<br>that <em>win clients</em></h1>
+
+            <p class="hero-sub">
+                Custom web solutions for businesses ready to scale —
+                fast, clean, and results-driven.
+            </p>
+
+            <!-- ✅ جديد: زرين بدل "Click Me" -->
+            <div class="hero-cta">
+                <a href="form.html" class="btn-primary">Book a free consultation →</a>
+                <a href="#work" class="btn-ghost">See our work</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- ✅ القديم: نفسه بس HTML أنظف -->
+        <div class="contact-us">
+            <h2>Contact us</h2>
+            <p><strong>📞 Phone: 66338273</strong></p>
+            <p><strong>📧 Email: HadeelRdaldhafeeri@hotmail.com</strong></p>
+        </div>
+
+        <hr>
+    </section>
+
+    <!-- ✅ القديم: نفس الكروت — بس حذفنا كلاسات green/sea/gray -->
+    <section id="services">
+
+        <!-- ✅ جديد: section-label فوق كل عنوان -->
+        <div class="section-label">What we do</div>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-desc">Everything you need to establish and grow your digital presence.</p>
+
+        <div class="services-container">
+            <div class="card">
+                <div class="icon">💻</div>
+                <h4>Web Development</h4>
+                <p>From landing pages to full web apps — built clean, fast, and scalable.</p>
+            </div>
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h4>Website Optimization</h4>
+                <p>Speed, SEO, and performance improvements that directly boost conversions.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🚀</div>
+                <h4>Landing Pages</h4>
+                <p>High-converting pages designed to turn visitors into paying customers.</p>
+            </div>
+        </div>
+
+        <!-- ✅ القديم: كروت المميزات — بقيت نفسها -->
+        <div class="contact-containr">
+            <div class="c1"><h3>Responsive Design</h3></div>
+            <div class="c2"><h3>SEO Optimized</h3></div>
+            <div class="c3"><h3>Fast Loading</h3></div>
+            <div class="c4"><h3>User Friendly</h3></div>
+            <div class="c5"><h3>Modern Design</h3></div>
+            <div class="c6"><h3>Secure & Safe</h3></div>
+            <div class="c7"><h3>Social Media Integration</h3></div>
+        </div>
+
+    </section>
+
+    <!-- ✅ جديد: section البورتفوليو — ما كان موجود -->
+    <section id="work">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Our Work</h2>
+        <p class="section-desc">A selection of projects we've built for our clients.</p>
+
+        <div class="reviews">
+            <div class="review" style="font-style:normal;">
+                <div style="height:140px;background:linear-gradient(135deg,#0a3d62,#00d4aa22);border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;font-size:36px;">🛍️</div>
+                <h4 style="font-size:17px;color:#e8f0fe;margin-bottom:6px;">E-Commerce Platform</h4>
+                <p style="font-size:13px;color:#8892b0;margin-bottom:12px;font-style:normal;">Full-stack store with payment integration and admin dashboard.</p>
+                <span style="font-size:12px;color:#00d4aa;">React · Node.js · Supabase</span>
+            </div>
+            <div class="review" style="font-style:normal;">
+                <div style="height:140px;background:linear-gradient(135deg,#112240,#00d4aa33);border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;font-size:36px;">📊</div>
+                <h4 style="font-size:17px;color:#e8f0fe;margin-bottom:6px;">Analytics Dashboard</h4>
+                <p style="font-size:13px;color:#8892b0;margin-bottom:12px;font-style:normal;">Real-time data dashboard for a logistics company.</p>
+                <span style="font-size:12px;color:#00d4aa;">Vue.js · Chart.js · REST API</span>
+            </div>
+            <div class="review" style="font-style:normal;">
+                <div style="height:140px;background:linear-gradient(135deg,#0a1628,#00d4aa22);border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;font-size:36px;">🏢</div>
+                <h4 style="font-size:17px;color:#e8f0fe;margin-bottom:6px;">Corporate Website</h4>
+                <p style="font-size:13px;color:#8892b0;margin-bottom:12px;font-style:normal;">Professional multi-page site with booking system.</p>
+                <span style="font-size:12px;color:#00d4aa;">HTML · CSS · JS · Twilio</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ القديم: نفس المحتوى بس HTML أنظف + about-grid عمودين -->
+    <section id="about">
+        <div class="section-label">Who we are</div>
+        <h2 class="section-title">Built by developers,<br>driven by results</h2>
+
+        <div class="about-grid">
+            <div>
+                <div class="about-block" style="margin-bottom:40px;">
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses with high-quality digital products that drive growth, enhance user experience, and deliver measurable results.</p>
+                </div>
+                <div class="about-block">
+                    <h3>Our Vision</h3>
+                    <p>To become a leading digital agency known for innovation, performance, and client success — built from Kuwait to the world.</p>
+                </div>
+            </div>
+            <div>
+                <div class="about-block">
+                    <h3>Why Stackify?</h3>
+                    <p>We focus on quality, speed, and real business impact. Our solutions are visually sharp and optimized for performance and conversion. We don't just build websites — we engineer growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ القديم: التقييمات — نفسها -->
+    <section>
+        <div class="section-label">Client Reviews</div>
+        <h2 class="section-title">What clients say</h2>
+        <div class="reviews">
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>"Stackify completely transformed our online presence. Our website is now faster, cleaner, and brings in more customers than ever."</p>
+                <h4>— Sarah Johnson</h4>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>"Professional team, fast delivery, and outstanding results. The landing page they built increased our conversions significantly."</p>
+                <h4>— Hasan bin Ali</h4>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>"Their attention to detail and performance optimization made a huge difference. Highly recommended for any business."</p>
+                <h4>— Eng. Hadeel</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ جديد: CTA Banner قبل الفوتر -->
+    <div class="cta-banner">
+        <div>
+            <h2>Ready to build something great?</h2>
+            <p>Book a free 30-minute consultation — no commitment required.</p>
+        </div>
+        <a href="form.html" class="btn-primary">Book a Meeting →</a>
+    </div>
+
+    <!-- ✅ القديم: Contact — نفسه -->
+    <section id="contact">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Get in touch</h2>
+        <div class="contact-info">
+            <div class="contact-item">📞 <strong>66338273</strong></div>
+            <div class="contact-item">📧 <strong>HadeelRdaldhafeeri@hotmail.com</strong></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Stackify. All rights reserved.</p>
+        <p>Kuwait 🇰🇼</p>
+    </footer>
+
+</body>
+</html>

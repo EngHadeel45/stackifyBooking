@@ -1,0 +1,658 @@
+/* ══════════════════════════════════════════
+   STACKIFY — Stylesheet
+   الفونت: Syne (عناوين) + DM Sans (نصوص)
+   اللون الرئيسي: --accent = أخضر مائي
+   الخلفية: --navy = أزرق داكن جداً
+══════════════════════════════════════════ */
+
+/* ── جلب الفونتين من Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+/* ── متغيرات الألوان والفونتات — غيّري من هنا بس ── */
+:root {
+  --navy: #0a1628;               /* الخلفية الرئيسية */
+  --navy-mid: #112240;           /* خلفية sections الثانوية */
+  --accent: #00d4aa;             /* اللون الأخضر المائي */
+  --accent-dim: rgba(0, 212, 170, 0.12); /* accent شفاف للخلفيات */
+  --text-primary: #e8f0fe;       /* النص الأساسي */
+  --text-secondary: #8892b0;     /* النص الثانوي / الوصف */
+  --text-muted: #4a5568;         /* نص خافت جداً */
+  --border: rgba(255,255,255,0.07); /* حدود الكروت */
+  --card-bg: rgba(255,255,255,0.03);  /* خلفية الكروت */
+  --card-hover: rgba(255,255,255,0.06); /* خلفية الكروت عند الهوفر */
+  --white: #ffffff;
+  --font-display: 'Syne', sans-serif;   /* فونت العناوين */
+  --font-body: 'DM Sans', sans-serif;   /* فونت النصوص */
+}
+
+/* ── Reset — يمسح الـ margin والـ padding الافتراضية ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Smooth scroll عند الضغط على الروابط ── */
+html { scroll-behavior: smooth; }
+
+/* ── إعدادات الـ body الأساسية ── */
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  background-color: var(--navy);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden; /* يمنع scroll أفقي */
+}
+
+/* ════════════════════════════════
+   NAV — شريط التنقل العلوي
+════════════════════════════════ */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 72px;
+  position: sticky;    /* يثبت في أعلى الصفحة عند الـ scroll */
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 22, 40, 0.85); /* شبه شفاف */
+  backdrop-filter: blur(16px);        /* تأثير الضبابية خلفه */
+  border-bottom: 1px solid var(--border);
+}
+
+/* اسم الموقع في يسار الـ nav */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+/* حرف الـ "ify" بلون accent */
+.nav-logo span { color: var(--accent); }
+
+/* الروابط في يمين الـ nav */
+.nav-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+nav a:hover { color: var(--text-primary); }
+
+/* زر "Book a Meeting" في الـ nav — له شكل button */
+.nav-cta {
+  background: var(--accent) !important;
+  color: var(--navy) !important;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  transition: opacity 0.2s !important;
+}
+
+.nav-cta:hover { opacity: 0.88; color: var(--navy) !important; }
+
+/* ════════════════════════════════
+   HERO — القسم الرئيسي الأول
+════════════════════════════════ */
+#home {
+  min-height: 88vh;  /* تقريباً ملء الشاشة */
+  display: flex;
+  align-items: center;
+  padding: 100px 5% 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* الدائرة الضوئية الخضراء في الزاوية — عنصر ديكوري */
+#home::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  pointer-events: none; /* ما يأثر على الكليك */
+}
+
+/* يحدد عرض النص حتى ما يمتد كثير */
+.hero-inner { max-width: 680px; }
+
+/* النص الصغير فوق العنوان — "Web Development Agency" */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+
+/* الخط الأخضر قبل النص الصغير */
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* العنوان الرئيسي — يتكيف مع حجم الشاشة بـ clamp */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 68px); /* min: 40px، max: 68px */
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+/* الكلمة الملونة داخل h1 — مثل "win clients" */
+h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* النص الوصفي تحت العنوان */
+.hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-bottom: 44px;
+  line-height: 1.65;
+}
+
+/* صف الأزرار */
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* زر أساسي — أخضر */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--navy);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: var(--font-body);
+}
+
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* زر ثانوي — شفاف مع حد */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: var(--font-body);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.2);
+  background: var(--card-hover);
+}
+
+/* ════════════════════════════════
+   SECTIONS — قواعد مشتركة
+════════════════════════════════ */
+section { padding: 96px 5%; }
+
+/* النص الصغير فوق عنوان كل section */
+.section-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* عنوان الـ section */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+/* وصف الـ section */
+.section-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* ════════════════════════════════
+   SERVICES — كروت الخدمات
+════════════════════════════════ */
+#services { background: var(--navy-mid); }
+
+/* الثلاث كروت جنب بعض */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;            /* فراغ 1px يعطي تأثير divider بين الكروت */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 40px 36px;
+  transition: background 0.25s;
+  cursor: default;
+}
+
+.card:hover { background: var(--card-hover); }
+
+.card .icon {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.card h4 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ════════════════════════════════
+   FEATURES GRID — شبكة المميزات
+   (Responsive, SEO, Fast...)
+════════════════════════════════ */
+.contact-containr {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.contact-containr > div {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px 20px;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.contact-containr > div:hover {
+  border-color: rgba(0,212,170,0.3);
+  background: var(--accent-dim);
+}
+
+.contact-containr h3 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ════════════════════════════════
+   ABOUT — عمودين جنب بعض
+════════════════════════════════ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-block h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.about-block p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════
+   REVIEWS — كروت التقييمات
+════════════════════════════════ */
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.review {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  transition: border-color 0.2s;
+}
+
+.review:hover { border-color: rgba(0,212,170,0.25); }
+
+/* النجوم — لون accent بدل الأصفر */
+.stars {
+  color: var(--accent);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.review p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ════════════════════════════════
+   CTA BANNER — بانر الدعوة للحجز
+════════════════════════════════ */
+.cta-banner {
+  margin: 0 5% 80px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(0,212,170,0.2);
+  border-radius: 16px;
+  padding: 60px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap; /* على الموبايل يتحول لعمود */
+}
+
+.cta-banner h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.cta-banner p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* ════════════════════════════════
+   CONTACT — معلومات التواصل
+════════════════════════════════ */
+.contact-info {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.contact-item strong { color: var(--text-primary); }
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ════════════════════════════════
+   FORM PAGE — صفحة الحجز
+════════════════════════════════ */
+.form-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* الكارت البيضاء اللي فيها الفورم */
+.form-card {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 48px 44px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.form-card h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.form-card .form-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+}
+
+/* الفورم نفسه — reset للـ styles القديمة */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* حقول الإدخال */
+input, select {
+  width: 100%;
+  padding: 13px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-family: var(--font-body);
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+input::placeholder { color: var(--text-muted); }
+input:focus { border-color: rgba(0,212,170,0.5); } /* حد أخضر عند الفوكس */
+input[type="date"], input[type="time"] { color-scheme: dark; } /* يخلي التقويم داكن */
+
+/* زر الإرسال */
+.calling, button[type="submit"] {
+  background: var(--accent);
+  color: var(--navy);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 4px;
+}
+
+.calling:hover, button[type="submit"]:hover { opacity: 0.88; }
+
+/* رسالة الحالة (success/error) */
+#statusMessage {
+  font-size: 14px;
+  min-height: 20px;
+  text-align: center;
+}
+
+/* ════════════════════════════════
+   CAREER PAGE — صفحة الوظائف
+════════════════════════════════ */
+.career-page { padding: 100px 5%; }
+
+/* شبكة كروت الوظائف */
+.jobs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 48px 0;
+}
+
+.box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+
+.box:hover {
+  border-color: rgba(0,212,170,0.3);
+  background: var(--accent-dim);
+}
+
+.box h2 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.box h3 {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* زر "Apply Now" */
+.forJob {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--navy);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.forJob:hover { opacity: 0.88; }
+
+/* ─── خط فاصل ─── */
+hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* ════════════════════════════════
+   RESPONSIVE — تكيف مع الشاشات
+════════════════════════════════ */
+
+/* تابلت وما دونه */
+@media (max-width: 768px) {
+  nav { padding: 0 6%; }
+  .nav-links { gap: 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; } /* عمود واحد */
+  .cta-banner { padding: 40px 32px; }
+  .form-card { padding: 36px 28px; }
+  h1 { letter-spacing: -1px; }
+}
+
+/* موبايل صغير */
+@media (max-width: 540px) {
+  .nav-links a:not(.nav-cta) { display: none; } /* يخفي الروابط ويبقى زر الحجز */
+  section { padding: 72px 6%; }
+}
