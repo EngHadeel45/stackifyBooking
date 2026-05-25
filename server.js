@@ -15,6 +15,9 @@ const { supabase } = require("./lib/supabase");
 
 app.use(express.json());
 app.use(cors({ origin: "*" }));
+app.get("/", (req, res) => {
+  res.send("Backend is working 🚀");
+});
 
 app.post("/book", async (req, res) => {
   try {
