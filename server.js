@@ -72,21 +72,26 @@ app.post("/book", async (req, res) => {
       smsStatus = "failed";
     }
 
-    // 3. إرسال WhatsApp لصاحبة الموقع
-    let whatsappStatus = "not_sent";
+    // 3. إرسال WhatsApp لصاحبة الموقع// إرسال WhatsApp لصاحبة الموقع
+let whatsappStatus = "not_sent";
 
-    try {
-      await client.messages.create({
-        body: `🔥 حجز جديد!\nالاسم: ${name}\nالهاتف: ${formattedPhone}\nالتاريخ: ${booking_date}\nالوقت: ${booking_time}`,
-        from: process.env.TWILIO_WHATSAPP_FROM,
-        to: process.env.OWNER_WHATSAPP
-      });
+try {
+  await client.messages.create({
+    body: `🔥 حجز جديد!
+الاسم: ${name}
+الهاتف: ${formattedPhone}
+التاريخ: ${booking_date}
+الوقت: ${booking_time}`,
+    from: "whatsapp:+14155238886",
+    to: "whatsapp:+96566338273"
+  });
 
-      whatsappStatus = "sent";
-    } catch (whatsappError) {
-      console.error("WHATSAPP ERROR:", whatsappError.message);
-      whatsappStatus = "failed";
-    }
+  whatsappStatus = "sent";
+
+} catch (whatsappError) {
+  console.error("WHATSAPP ERROR:", whatsappError.message);
+  whatsappStatus = "failed";
+}
 
     // 4. الحجز ناجح حتى لو فشل أحد الإشعارات
     return res.json({
